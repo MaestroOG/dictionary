@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --dark-purple-color: #A545F2;
+  --mid-purple-color: #BC8DDF;
+  --light-purple-color: #E9CFFC;
+  --gray-color: #888686;
+  --input-bg: #F4F4F4;
+  --primary-bg: #FFFFFF;
+  --meaning-text-color: #3d3d3d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*::selection {
+  background: var(--dark-purple-color);
+  color: var(--primary-bg);
+}
+
+img {
+  max-width: 100%;
+}
