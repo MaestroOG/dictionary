@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './Dictionary.css'
 import { FaPlay } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
 
 const Dictionary = () => {
@@ -31,6 +32,7 @@ const Dictionary = () => {
     return (
         <div className="main-container">
             <div className="search-container">
+                {word.length > 0 && <FaTimes className='icon' onClick={() => setWord("")} />}
                 <input type="text" value={word} onChange={(e) => setWord(e.target.value)} id='word-input' placeholder='Enter word or phrase' />
                 <CiSearch className='search-icon' onClick={() => getData(word)} />
             </div>
@@ -43,9 +45,9 @@ const Dictionary = () => {
                                 phonetic.text
                             ) : null)}</p>
                         </div>
-                        <div className="heading-button">
+                        {/* <div className="heading-button">
                             <span className='button'><FaPlay /></span>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="meaning-container">
                         {data && <p className='grammar'>{data.meanings[0].partOfSpeech}</p>}
@@ -62,7 +64,10 @@ const Dictionary = () => {
                     <div className="synonym-container">
                         <p id="meaning">Synonyms</p>
                         {data && data.meanings.map(meaning => meaning.synonyms.map((syn, i) => {
-                            return <a href="#" key={i}>{syn}</a>
+                            return <a onClick={() => {
+                                setWord(syn);
+                                getData(syn)
+                            }} key={i}>{syn}</a>
                         }))}
                         {/* <a href="#">electric keyboard</a> */}
                     </div>
